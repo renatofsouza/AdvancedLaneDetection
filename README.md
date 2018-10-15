@@ -159,15 +159,18 @@ Here's a [link to my video result](./project_video.mp4)
 
 #### 1. Briefly discuss any problems / issues you faced in your implementation of this project.  Where will your pipeline likely fail?  What could you do to make it more robust?
 
-The algothm worked reliabily on the video project. There were a couple of areas that the lane detection was not very smoth from one frame to the other. In order to smooth it, I am using an average of the previous 5 fits. 
+The algothm worked reliabily on the video project. There were a couple of areas that the lane detection was not very smooth from one frame to the other. To solve that, I am using an average of the previous 5 fits. That helps the stability of the lane detection. 
 
 By processing the challenge videos, there are at least a couple of situations that I could verify the current implementation will fail. 
 
 The first one is when cracks are present in the road. I have not yet done a deep analysis, but I believe the histogram may be catching peaks where the cracks are. One possible way to improve this is to compare the x distance between the left and right histogram peaks agains the expected lane width. If the numbers are not simliar I can search for lower peaks in the histogram and compare distances again. 
 
-I can possibily try to improve the detection of the binary image to disregard cracks perhaps based on color threshold.
+Another idea is to improve the detection of the binary image to filter out cracks perhaps based on color threshold.
 
 I can also improve the sanity check of the lane lines. For example, I can check if they are more or less parallel and discard situations where they may cross near the car. 
 
-Another problem I detected 
+The second problem I detected is when there aresharp or multiple turns, one after the other. 
 
+In order to improve this situation, I can try to fit a different function. That will help to catch changes of directions in the line.  
+
+I can also try to play with the size of the sliing window to be more effective in sharp turns.  
