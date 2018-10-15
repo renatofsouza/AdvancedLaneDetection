@@ -16,26 +16,15 @@ The goals / steps of this project are the following:
 
 [image1]: ./output_images/undistorted.jpg "Chess board Undistorted"
 [image2]: ./camera_cal/calibration1.jpg "Chess board distorted"
-[image3]: ./camera_cal/test5.jpg "Dash cam distorted image"
+[image3]: ./test_images/test5.jpg "Dash cam distorted image"
 [image4]: ./output_images/straight_lines1_undistorted.jpg "Dash cam undistorted image"
 [image5]: ./output_images/straight_lines1_binary.jpg "Dash cam binary image"
 [image6]: ./output_images/straight_lines1_persp_pts.jpg "Dash cam with perpective transform points"
 [image7]: ./output_images/straight_lines1_warp.jpg "perpective transformed image (warped)"
 [image8]: ./output_images/straight_lines1_warp_binary.jpg "warped binary (perpective transformed) image "
 [image9]: ./output_images/histogram.jpg "Histogram showing the peaks on lane pixels "
-[image10]: ./output_images/straight_lines1_sliding_window.jpg " Image containing sliding window "
+[image10]: ./output_images/straight_lines1_sliding_window.jpg " Image containing sliding window " 
 
-
-
-
-
-
-
-[image3]: ./examples/binary_combo_example.jpg "Binary Example"
-[image4]: ./examples/warped_straight_lines.jpg "Warp Example"
-[image5]: ./examples/color_fit_lines.jpg "Fit Visual"
-[image6]: ./examples/example_output.jpg "Output"
-[video1]: ./project_video.mp4 "Video"
 
 ## [Rubric](https://review.udacity.com/#!/rubrics/571/view) Points
 
@@ -61,8 +50,7 @@ I start by preparing "object points", which will be the (x, y, z) coordinates of
 
 I then used the output `objpoints` and `imgpoints` to compute the camera calibration and distortion coefficients using the `cv2.calibrateCamera()` function.  I applied this distortion correction to the test image using the `cv2.undistort()` function. Below you can see both the distorted image and the obtained undistorted output: 
 
-              
-![Original Image][image1]         ![Distorted Image][image2]
+![Original Image][image2]         ![Distorted Image][image1]
 
 ### Pipeline (single images)
 
@@ -173,4 +161,4 @@ The second problem I detected is when there aresharp or multiple turns, one afte
 
 In order to improve this situation, I can try to fit a different function. That will help to catch changes of directions in the line.  
 
-I can also try to play with the size of the sliing window to be more effective in sharp turns.  
+I can also try to play with the size of the sliding windows to be more effective in sharp turns.  
