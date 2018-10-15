@@ -24,6 +24,7 @@ The goals / steps of this project are the following:
 [image8]: ./output_images/straight_lines1_warp_binary.jpg "warped binary (perpective transformed) image "
 [image9]: ./output_images/histogram.jpg "Histogram showing the peaks on lane pixels "
 [image10]: ./output_images/straight_lines1_sliding_window.jpg " Image containing sliding window " 
+[image11]: ./output_images/straight_lines1_final_image.jpg " Final imagae " 
 
 
 ## [Rubric](https://review.udacity.com/#!/rubrics/571/view) Points
@@ -100,7 +101,8 @@ I verified that my perspective transform was working as expected by drawing the 
 
 #### 4. Describe how (and identify where in your code) you identified lane-line pixels and fit their positions with a polynomial?
 
-Then I executed the following steps: 
+I executed the following steps: 
+
 (a) Executed a perpective transform (birds eye view) to the binary image. This is performed by the 
 function  `perspective_transform(img, src_pts, dst_pts)` in the file `LaneTracker.py`
 ![Warped Image (birds eye) ][image8]
@@ -117,8 +119,6 @@ Then I start the next window based on the average density of the pixels in the p
 ![Sliding Window][image10]
 
 (d) Based on the x and y coordinates returned by the `find_lane_pixels(binary_warped)` function, I fit a polynomial. This is executed by the function `fit_polynomial(binary_warped)` in the file `LaneTracker.py`.
-
-![Fit Polynomial][image11]
 
 (e) Once the lane is found using the mmethod described above, the next frame I use a more efficient  search algorithm. I pass a fit and search for pixels in the new frame around this fit. The fit I use is the average of the last 5 good fits. If the algorithm gets lost, then I fall back to the previous search mechanism.  
 
